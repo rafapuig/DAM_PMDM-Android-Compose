@@ -1,8 +1,7 @@
-package es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui
+package es.rafapuig.pmdm.compose.exercises.layouts.calculator
 
 import android.app.Activity
 import android.content.res.Configuration
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,29 +11,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Backspace
 import androidx.compose.material.icons.automirrored.outlined.Backspace
-import androidx.compose.material.icons.filled.Backspace
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.view.WindowCompat
-import es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui.components.CalculatorButton
-import es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui.theme.DarkColorScheme
+import es.rafapuig.pmdm.compose.exercises.layouts.calculator.components.CalculatorButton
 import es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui.theme.LightOrange
 import es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui.theme.Orange
 

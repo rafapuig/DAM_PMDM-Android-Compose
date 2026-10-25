@@ -1,4 +1,4 @@
-package es.rafapuig.pmdm.compose.exercises.layouts.calculator.ui
+package es.rafapuig.pmdm.compose.exercises.layouts.calculator
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
