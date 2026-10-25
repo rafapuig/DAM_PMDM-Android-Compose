@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PMDMComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PreviewDemoScreen(
+                    DemoScreenContent(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

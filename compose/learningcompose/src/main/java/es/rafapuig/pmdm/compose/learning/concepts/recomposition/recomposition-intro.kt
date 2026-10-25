@@ -68,5 +68,5 @@ fun MyComposable() {
      * que se debe mostrar cuando ha terminado la ejecución
      * de la función composable
      */
-    Log.i(TAG, "Fin de la funcion MyComposable")
+    Log.i(TAG, "Fin de la función MyComposable")
 }

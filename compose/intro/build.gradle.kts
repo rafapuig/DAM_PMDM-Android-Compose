@@ -5,13 +5,17 @@ plugins {
 }
 
 android {
-    namespace = "es.rafapuig.pmdm.intro"
-    compileSdk = 37
+    namespace = "es.rafapuig.pmdm.compose.intro"
+    compileSdk {
+        version = release(37) {
+            compileSdkMinor = 2
+        }
+    }
 
     defaultConfig {
-        applicationId = "es.rafapuig.pmdm.intro"
+        applicationId = "es.rafapuig.pmdm.compose.intro"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -20,11 +24,9 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            optimization {
+                enable = false
+            }
         }
     }
     compileOptions {
@@ -37,11 +39,11 @@ android {
     }
 }
 
-/*kotlin {
-    jvmToolchain(11)
-}*/
-
 dependencies {
+
+    /**
+     * https://developer.android.com/develop/ui/compose/setup#kotlin_1
+     */
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

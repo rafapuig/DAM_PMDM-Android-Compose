@@ -79,7 +79,8 @@ fun MyComposable() {
             ) {
                 Text(text = "Alternar")
             }
-            //Text(text = "Valor del estado: ${toggle.value}")
+            // Probar con esta linea comentada y luego descomentada (provoca la recomposición)
+            Text(text = "Valor del estado: ${toggle.value}")
         }
     }
 

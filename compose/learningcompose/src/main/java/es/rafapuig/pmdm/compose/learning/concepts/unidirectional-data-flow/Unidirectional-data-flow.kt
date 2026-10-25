@@ -6,17 +6,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * UNIDIRECTIONAL DATA FLOW
  *
- * Es un método para del desarrollo de apps donde
+ * Es un metodo para del desarrollo de apps donde
  * - el estado almacenado en un composable
  * - NO se debe cambiar directamente en ninguna de las composables hijas
  */
 
+@Preview
 @Composable
-fun UnidirectionaldataflowDemoScreen() {
+fun UnidirectionalDataflowDemoScreen() {
     ParentFunctionWithState()
 }
 
@@ -42,8 +44,8 @@ fun ParentFunctionWithState() {
 
     /**
      * A las funciones composables hijas les pasamos
-     * el valor del estado
-     * y la función que deben invocar para producir un cambio del estado
+     * - el valor del estado
+     * - y la función que deben invocar para producir un cambio del estado
      */
     ChildFunctionReceivesState(switchState, onSwitchChange)
 }

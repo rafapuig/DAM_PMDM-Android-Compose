@@ -17,15 +17,15 @@ import androidx.compose.ui.tooling.preview.Preview
  * COMPOSITION LOCAL
  *
  * Ya sabemos que una interface de usuario (UI) en Compose se ensambla
- * a partir de crear jerarquias de funciones composables
+ * a partir de crear jerarquías de funciones composables
  * (llamadas de un composable padre a composables hijas)
  *
- * Tambien sabemos que Compose esta dirigido por estados (State-driven)
+ * También sabemos que Compose está dirigido por estados (State-driven)
  * y que cambios en los estados generan recomposición de la UI
  * (lo que lleva a volver a llamar a funciones composables que hacen uso del valor del estado
  * que haya cambiado)
  *
- * Y además sabemos que un estado debe ser declarado en el nodo más alto necesario del arbol
+ * Y además sabemos que un estado debe ser declarado en el nodo más alto necesario del árbol
  * de nodos de funciones composables
  * (definido por las llamadas a las funciones composables durante la composición)
  * Al hecho de subir la declaración del estado a un nodo superior (funcion llamadora)

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
  * Fuente: https://android.googlesource.com/platform/frameworks/support/+/androidx-main/compose/docs/compose-api-guidelines.md#naming-unit-composable-functions-as-entities
  *
  * Si la función devuelve un valor (no Unit) entonces debe empezar por minúscula
- * Fuente : https://android.googlesource.com/platform/frameworks/support/+/androidx-main/compose/docs/compose-api-guidelines.md#naming-composable-functions-that-return-values
+ * Fuente: https://android.googlesource.com/platform/frameworks/support/+/androidx-main/compose/docs/compose-api-guidelines.md#naming-composable-functions-that-return-values
  */
 
 @Composable

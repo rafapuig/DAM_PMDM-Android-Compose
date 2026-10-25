@@ -54,7 +54,7 @@ val counterState = mutableIntStateOf(0)
 
 val numbersState = mutableStateListOf(1, 2, 3)
 
-val daysState = mutableStateSetOf("lunes", "miercoles", "viernes")
+val daysState = mutableStateSetOf("lunes", "miércoles", "viernes")
 
 fun test() {
     // Cambiar el valor del estado mediante la propiedad value

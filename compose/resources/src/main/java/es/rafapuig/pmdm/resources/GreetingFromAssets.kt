@@ -15,11 +15,12 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun GreetingFromAssets() {
 
+    // Obtener el contexto en una function composable
     val context = LocalContext.current
 
     /**
      * La propiedad assets devuelve un AssetsManager
-     * El método use es el equivalente al try-with-resources de Java
+     * El metodo `use` es el equivalente al `try-with-resources` de Java
      * que cierra el recurso al salir del bloque
      * y devuelve el resultado del bloque
      */

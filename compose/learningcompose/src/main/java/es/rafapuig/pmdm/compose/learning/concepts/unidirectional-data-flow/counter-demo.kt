@@ -32,9 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
  */
 
 /**
- * El componente Counter es estateless
- * El compomente padre será responsable de contener y actualizar el estado del contador
- * y pasarselo (hacia abajo) al composable Counter
+ * El componente Counter es stateless
+ * El componente padre será responsable de contener y actualizar el estado del contador
+ * y pasárselo (hacia abajo) al composable Counter
  */
 @Composable
 fun Counter(

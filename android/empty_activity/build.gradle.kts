@@ -58,5 +58,5 @@ dependencies {
 //    androidTestImplementation(libs.androidx.espresso.core)
 //    androidTestImplementation(libs.androidx.junit)
 //    debugImplementation(libs.androidx.compose.ui.test.manifest)
-//    debugImplementation(libs.androidx.compose.ui.tooling)
+      debugImplementation(libs.androidx.compose.ui.tooling) // para que funcionen las previews en Android Studio
 }

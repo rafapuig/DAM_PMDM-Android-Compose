@@ -2,7 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
+      <module name="PMDM-Compose.compose.myfirstcomposeapp" target="25" />
       <module name="PMDM-Compose.intro" target="21" />
+      <module name="PMDM-Compose.myapplication" target="25" />
+      <module name="PMDM-Compose.myapplication2" target="25" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -78,7 +78,7 @@ fun PersonItemPreview(
  * Recibe como dato una lista de personas
  *
  * Como la función tiene parámetros de entrada
- * no se le puede aplicar la anotacion @Preview
+ * no se le puede aplicar la anotación @Preview
  * Se usa una función wrapper que llama a esta función
  */
 @Composable

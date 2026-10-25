@@ -18,7 +18,7 @@ import androidx.core.graphics.drawable.toBitmapOrNull
 import es.rafapuig.pmdm.resources.R
 
 /**
- * Una de las ventajas de usar imagens en recursos
+ * Una de las ventajas de usar imagenes en recursos
  * Es la de poder localizar según el idioma del dispositivo
  * que esté utilizando la aplicación
  *

@@ -27,7 +27,10 @@ fun fuzzyScore(text: String, query: String): Int {
     return score
 }
 
-fun <T> Iterable<T>.fuzzyScored(query: String, toText: T.() -> String = { this.toString() }): List<T> =
+fun <T> Iterable<T>.fuzzyScored(
+    query: String,
+    toText: T.() -> String = { this.toString() }
+): List<T> =
     map { item -> item to fuzzyScore(item.toText(), query) }
         .filter { (_, score) -> score > 0 }
         .sortedByDescending { (_, score) -> score }

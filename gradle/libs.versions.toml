@@ -1,18 +1,18 @@
 [versions]
 material = "1.14.0"
 appcompat = "1.7.1"
-agp = "9.3.0"
+agp = "9.4.1"
 kotlin = "2.4.10"
 core = "1.19.0"     #https://developer.android.com/jetpack/androidx/releases/lifecycle
 lifecycle = "2.11.0"    #https://developer.android.com/jetpack/androidx/releases/lifecycle
 activity = "1.13.0" #https://developer.android.com/jetpack/androidx/releases/activity
-composeBom = "2026.06.01"
+composeBom = "2026.09.00"
 coilBom = "3.5.0"
 navigationCompose = "2.9.8"
 navigation3 = "1.1.4"
 datastorePreferences = "1.2.1"
 room = "2.8.4"
-ksp = "2.3.5"
+ksp = "2.3.6"
 kotlinxSerializationJson = "1.11.0"
 retrofit = "3.0.0"
 converterKotlinxSerialization = "3.0.0"

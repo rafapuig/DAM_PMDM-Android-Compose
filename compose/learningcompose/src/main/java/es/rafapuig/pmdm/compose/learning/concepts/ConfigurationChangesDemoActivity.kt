@@ -15,14 +15,6 @@ class ConfigurationChangesDemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            PastelTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ConfigurationChangesDemoScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        setContent { ConfigurationChangesDemoScreen() }
     }
 }

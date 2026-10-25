@@ -6,7 +6,6 @@
       <GradleProjectSettings>
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -69,7 +68,6 @@
             <option value="$PROJECT_DIR$/compose" />
             <option value="$PROJECT_DIR$/compose/intro" />
             <option value="$PROJECT_DIR$/compose/learningcompose" />
-            <option value="$PROJECT_DIR$/compose/myfirstcomposeapp" />
             <option value="$PROJECT_DIR$/compose/previews" />
             <option value="$PROJECT_DIR$/compose/resources" />
             <option value="$PROJECT_DIR$/exercises" />
@@ -81,7 +79,6 @@
             <option value="$PROJECT_DIR$/hardware/sensors" />
             <option value="$PROJECT_DIR$/lifecycle" />
             <option value="$PROJECT_DIR$/multimedia" />
-            <option value="$PROJECT_DIR$/myapplication" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/navigation3" />
             <option value="$PROJECT_DIR$/navigation/navigation3/basic" />

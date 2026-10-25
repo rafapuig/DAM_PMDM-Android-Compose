@@ -21,7 +21,7 @@ fun ImageFromResource() {
 
     /**
      * Para obtener en Compose imágenes desde los recursos se usa
-     * la función painterResource() proporcionando en identificador del recurso
+     * la función painterResource() proporcionando el identificador del recurso
      * Para obtener el identificador hacemos uso de la clase R
      */
     val painter = painterResource(R.drawable.googlelogo_color_272x92dp)
