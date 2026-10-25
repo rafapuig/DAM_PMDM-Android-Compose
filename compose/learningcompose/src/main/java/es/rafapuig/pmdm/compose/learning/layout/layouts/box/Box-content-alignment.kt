@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
  *
  * El orden en que los composables hijos son apilados
  * lo determina el orden en que son llamados dentro de la función Box
- * El primero hijo va al fondo de la pila.
+ * El primer hijo va al fondo de la pila.
  */
 
 @Preview(showBackground = true)
