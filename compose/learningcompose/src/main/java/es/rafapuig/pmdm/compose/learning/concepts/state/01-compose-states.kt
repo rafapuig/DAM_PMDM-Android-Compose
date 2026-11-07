@@ -2,14 +2,17 @@ package es.rafapuig.pmdm.compose.learning.concepts.state
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.ui.Modifier
@@ -17,6 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * Estados de Compose State<T> y MutableState<T>
+ *
+ * En Compose un estado es un valor que puede cambiar a lo largo del tiempo
  *
  * https://developer.android.com/develop/ui/compose/state
  *
@@ -27,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * Para crear un objeto estado que pueda cambiar (mutable)
- * no se usa un constructor
+ * no se usa el constructor
  * se usa la función factoría mutableStateOf
  * proporcionando el valor inicial del estado
  * y que nos fabrica un objeto MutableState<Tipo-de-valor> genérico
@@ -41,11 +46,24 @@ val passwordState = mutableStateOf("")
 
 /**
  * Para el caso de valores enteros es más eficiente utilizar
- * la función mutableIntStateOf
+ * la función factoría mutableIntStateOf
  * que fabrica un MutableIntState
  */
 
 val counterState = mutableIntStateOf(0)
+
+/**
+ * Para los valores de tipo float existe
+ * la función factoría mutableFloatStateOf
+ */
+
+val sliderState = mutableFloatStateOf(50f)
+
+/**
+ * Además de estas existen:
+ * - mutableLongStateOf para valores de tipo Long
+ * - mutableDoubleStateOf para valores de tipo Double
+ */
 
 /**
  * Para el caso de colecciones como listas, mapas y conjuntos
@@ -56,6 +74,10 @@ val numbersState = mutableStateListOf(1, 2, 3)
 
 val daysState = mutableStateSetOf("lunes", "miércoles", "viernes")
 
+val countryToCapital =
+    mutableStateMapOf("España" to "Madrid", "Italia" to "Roma", "Francia" to "Paris")
+
+
 fun test() {
     // Cambiar el valor del estado mediante la propiedad value
     enabledState.value = true
@@ -64,11 +86,21 @@ fun test() {
     // Para estados de valor entero usamos intValue para evitar boxing y unboxing
     counterState.intValue = 1
 
+    // Para estado de valor float usamos floatValue para evitar boxing y unboxing
+    sliderState.floatValue = 1f
+
     // Realizar operaciones que modifiquen el número de elementos de la colección
     // o cambiar elementos por otros producen un cambio de estado
     numbersState.add(5)
+    numbersState += 6
+    numbersState.remove(2)
+    numbersState -= 1
 
     daysState.add("domingo")
+
+    countryToCapital["Portugal"] = "Lisboa"
+    countryToCapital -= "Portugal"
+    countryToCapital += "Alemania" to "Berlin"
 }
 
 /**
@@ -92,7 +124,7 @@ fun MyEnabledStateReader() {
 @Composable
 fun MyPasswordStateReader() {
     TextField(
-        value = passwordState.value, // lee el valor del estado
+        value = passwordState.value, // lee el valor del estado passwordState
         onValueChange = { passwordState.value = it }
     )
 }
@@ -121,6 +153,28 @@ fun MyNumbersStateReader() {
             }
         ) {
             Text("Añadir numero")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MyMapStateReader() {
+    Column {
+        countryToCapital.forEach {
+            Row {
+                Text(it.key)
+                Text(" - ")
+                Text(it.value)
+            }
+            HorizontalDivider()
+        }
+        Button(
+            onClick = {
+                countryToCapital += "Alemania" to "Berlín"
+            }
+        ) {
+            Text("Añadir Alemania")
         }
     }
 }

@@ -39,7 +39,7 @@ import es.rafapuig.pmdm.compose.learning.ui.theme.pastel.PastelTheme
  * Dicha función llamadora puede haber declarado un estado para mantener los datos
  * que usa como argumento de llamada.
  *
- * Esto implica que un cambio en el estado declarado un composable llamador
+ * Esto implica que un cambio en el estado declarado en un composable llamador
  * (padre o ancestro en la jerarquía de llamadas)
  * podría necesitar reflejarse en cualquiera de los composables hijos
  * a los que el valor del estado se pasa como argumento.

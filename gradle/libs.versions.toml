@@ -1,7 +1,7 @@
 [versions]
 material = "1.14.0"
 appcompat = "1.8.0"
-agp = "9.4.1"
+agp = "9.5.1"
 kotlin = "2.4.21"
 core = "1.19.1"     #https://developer.android.com/jetpack/androidx/releases/lifecycle
 lifecycle = "2.11.0"    #https://developer.android.com/jetpack/androidx/releases/lifecycle

@@ -35,7 +35,9 @@ fun myComposableFunctionWithReturnValue(): Int {
 
 
 /**
- * Se puede llamar a otro composable dentro de la función composable
+ * Dentro de la función composable
+ * - Se puede llamar a otro composable
+ * - Se puede llamar a cualquier función normal de Kotlin
  * (Si una función no es composable
  * no puede llamar dentro de ella a una función composable)
  */
@@ -67,7 +69,6 @@ fun CustomText(text: String, fontSize: Int, color: Color) {
 /**
  * Una función anotada con @Preview se puede previsualizar en el IDE
  */
-
 @Preview
 @Composable
 fun CustomTextPreview() {
@@ -83,7 +84,7 @@ fun CustomTextPreview() {
  * condicionales, bucles, etc.
  * (siendo esta una de las principales ventajas respecto a Views en XML)
  */
-@Preview    // Probar el modo interactivo
+@Preview (showBackground = true)   // Probar el modo interactivo
 @Composable
 fun CustomSwitch() {
 
@@ -96,8 +97,14 @@ fun CustomSwitch() {
      */
 
     val checked = remember(
+        /**
+         * El cálculo solamente se realiza durante la composición
+         * Las recomposiciones devuelven el valor producido durante la composición
+         * (Por tanto, el objeto MutableState solamente se crea en la composición
+         * y se devuelve su referencia en las recomposiciones)
+         */
         calculation = {
-            /* Crea un MutableState inicializado a false */
+            /* Crea un objeto MutableState con valor inicial false */
             mutableStateOf(false)
         }
     )
@@ -119,8 +126,16 @@ fun CustomSwitch() {
         )
         // Lógica condicional en función del valor del estado checked
         if (checked.value) {
+            /**
+             * Si el valor del estado checked es true
+             * el siguiente composable Text entra en la composición
+             * si es false y estaba en la composición entonces sale de la composición
+             */
             Text(text = "Switch On")
         } else {
+            /**
+             * Para este composable Text ocurre lo contrario
+             */
             Text(text = "Switch Off")
         }
     }
