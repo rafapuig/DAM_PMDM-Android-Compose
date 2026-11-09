@@ -46,9 +46,9 @@ import es.rafapuig.pmdm.compose.learning.ui.theme.pastel.PastelTheme
  *
  * Para ello, el runtime de compose realiza lo que se denomina una RECOMPOSICIÓN
  *
- * Una recomposición se lleva a caba cada vez que el valor de un estado
+ * Una recomposición se lleva a cabo cada vez que el valor de un estado
  * cambia dentro de una jerarquía de llamadas de funciones composables.
- * No es mas que volver a llamar a las funciones afectadas pasándoles como
+ * No es más que volver a llamar a las funciones afectadas pasándoles como
  * argumento el nuevo valor del estado.
  *
  * Solamente se "recomponen" las funciones afectadas por el estado que ha cambiado.

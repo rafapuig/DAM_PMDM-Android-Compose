@@ -15,7 +15,9 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
@@ -157,22 +159,21 @@ fun MyNumbersStateReader() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true) // Start interactive mode
 @Composable
 fun MyMapStateReader() {
     Column {
         countryToCapital.forEach {
             Row {
-                Text(it.key)
+                Text(it.key, modifier = Modifier.weight(0.5f), textAlign = TextAlign.Center)
                 Text(" - ")
-                Text(it.value)
+                Text(it.value, modifier = Modifier.weight(0.5f), textAlign = TextAlign.Center)
             }
             HorizontalDivider()
         }
         Button(
-            onClick = {
-                countryToCapital += "Alemania" to "Berlín"
-            }
+            onClick = { countryToCapital += "Alemania" to "Berlín" },
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text("Añadir Alemania")
         }

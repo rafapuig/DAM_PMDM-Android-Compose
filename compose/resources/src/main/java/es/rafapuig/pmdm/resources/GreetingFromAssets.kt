@@ -33,9 +33,8 @@ fun GreetingFromAssets() {
         }
 
     Text(text = text)
-
-
 }
+
 
 @Preview(showBackground = true)
 @Composable

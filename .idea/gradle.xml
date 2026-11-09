@@ -33,6 +33,7 @@
             <option value="$PROJECT_DIR$/android/empty_activity" />
             <option value="$PROJECT_DIR$/android/intro" />
             <option value="$PROJECT_DIR$/android/no_activity" />
+            <option value="$PROJECT_DIR$/android/window_insets" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/clean_architecture" />
             <option value="$PROJECT_DIR$/clean_architecture/auth" />

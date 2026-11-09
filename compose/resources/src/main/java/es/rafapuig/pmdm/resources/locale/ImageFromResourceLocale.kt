@@ -18,7 +18,7 @@ import androidx.core.graphics.drawable.toBitmapOrNull
 import es.rafapuig.pmdm.resources.R
 
 /**
- * Una de las ventajas de usar imagenes en recursos
+ * Una de las ventajas de usar imágenes en recursos
  * Es la de poder localizar según el idioma del dispositivo
  * que esté utilizando la aplicación
  *
@@ -31,10 +31,12 @@ fun ImageFromResourceLocale() {
     val painter = painterResource(R.drawable.schindler_list)
 
     val context = LocalContext.current
-    val drawableFromContext = context.getDrawable(R.drawable.schindler_list)
+    val drawableFromContext =
+        context.getDrawable(R.drawable.schindler_list) // No configuration-aware
 
     val resources = LocalResources.current
-    val drawableFromResources = resources.getDrawable(R.drawable.schindler_list, context.theme)
+    val drawableFromResources =
+        resources.getDrawable(R.drawable.schindler_list, context.theme)
 
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())

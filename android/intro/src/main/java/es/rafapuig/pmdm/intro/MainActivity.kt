@@ -13,31 +13,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.rafapuig.pmdm.intro.ui.theme.PMDMComposeTheme
 
-/**
- * La clase de la actividad debe estar declarada
- * en el manifiesto de la aplicación
- * AndroidManifest.xml
- *
- * Si pulsas en el widget </> a la izquierda de la
- * clase puedes ir a su declaración en el manifiesto
- *
- * Para que una actividad se pueda lanzar como actividad
- * inicial desde el launcher
- * se debe exportar en el manifiesto
- * y se debe declarar en el intent-filter
- *
- * Para crear una UI en Compose y mostrarla como contenido
- * de la actividad esta debe extender la clase ComponentActivity()
- */
 class MainActivity : ComponentActivity() {
 
-    /**
-     * Se llama al callback onCreate()
-     * una vez la actividad ha sido adjuntada a la aplicación
-     * y se ha creado su contexto
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /**
+         * Este método pertenece a la biblioteca base androidx.activity:activity
+         * (introducido en las versiones recientes para reflejar la pantalla completa
+         * detrás de las barras del sistema)
+         */
+        /**
+         * Sin Edge-to-Edge:
+         * Las barras del sistema se mezclan su color con el color de la pantalla.
+         *
+         * Con Edge-to-Edge:
+         * Las barras del sistema son capas transparentes que flotan sobre tu app
+         */
         enableEdgeToEdge()
 
         /**
@@ -49,7 +41,7 @@ class MainActivity : ComponentActivity() {
          */
         setContent {
             PMDMComposeTheme {
-                MainScreen()
+                MainScreenWithBox()
             }
         }
     }

@@ -1,13 +1,13 @@
 [versions]
 material = "1.14.0"
 appcompat = "1.8.0"
-agp = "9.5.1"
+agp = "9.5.1"   # Android Gradle Plugin https://developer.android.com/build/releases/about-agp
 kotlin = "2.4.21"
 core = "1.19.1"     #https://developer.android.com/jetpack/androidx/releases/lifecycle
 lifecycle = "2.11.0"    #https://developer.android.com/jetpack/androidx/releases/lifecycle
 activity = "1.13.0" #https://developer.android.com/jetpack/androidx/releases/activity
 composeBom = "2026.09.00"
-coilBom = "3.5.0"
+coilBom = "3.6.3"
 navigationCompose = "2.9.8"
 navigation3 = "1.1.4"
 datastorePreferences = "1.2.1"
@@ -71,6 +71,7 @@ androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.re
 # Coil (Libreria de carga de imagenes)
 coil-bom = { module = "io.coil-kt.coil3:coil-bom", version.ref = "coilBom" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose" }
+coil-svg = { module = "io.coil-kt.coil3:coil-svg" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp" }
 
 # Navigation 2 Compose (Forma anterior a Navigation 3 de navegacion)
@@ -136,7 +137,7 @@ androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime
 
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "agp" } # Android Gradle Plugin
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

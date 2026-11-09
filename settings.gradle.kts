@@ -125,3 +125,5 @@ include(":navigation:navigation3:modularization")
 //include(":myapplication")
 
 //include(":myapplication2")
+//include(":android:empty")
+include(":android:window_insets")

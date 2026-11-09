@@ -3,8 +3,10 @@ package es.rafapuig.pmdm.resources
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
@@ -12,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toBitmapOrNull
 
@@ -28,6 +31,7 @@ fun ImageFromResource() {
 
     /**
      * Desde el contexto también podemos obtener la imagen como un drawable
+     * (Hacerlo de este modo no es context-aware)
      */
     val context = LocalContext.current
     val drawableFromContext = context
@@ -40,14 +44,12 @@ fun ImageFromResource() {
     val resources = LocalResources.current
     val drawableFromResources = resources.getDrawable(
         R.drawable.googlelogo_color_272x92dp,
-        context.theme
+        null //context.theme
     )
 
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
-
-
         /**
          * El painter es la forma preferible en Compose
          * Se usa el tamaño intrínseco del painter
@@ -81,6 +83,8 @@ fun ImageFromResource() {
             Log.i("DENSITY", "Context bitmap density: ${it.density}")
         }
 
+        HorizontalDivider()
+
         bitmapFromContext?.asImageBitmap()?.let {
             Image(
                 bitmap = it,
@@ -88,6 +92,8 @@ fun ImageFromResource() {
                 //modifier = Modifier.height((bitmapFromContext.height / bitmapFromContext.density).dp)
             )
         }
+
+        HorizontalDivider()
 
         Image(
             bitmap = drawableFromResources
