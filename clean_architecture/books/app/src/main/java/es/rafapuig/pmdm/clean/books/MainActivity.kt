@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.viewModel
 import es.rafapuig.pmdm.clean.books.core.data.HttpClientFactory
 import es.rafapuig.pmdm.clean.books.feature.book.data.remote.KtorRemoteBookDataSource
 import es.rafapuig.pmdm.clean.books.feature.book.data.repository.OfflineFirstBookRepository
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.BookListScreenRoot
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.BookListViewModel
-import es.rafapuig.pmdm.clean.books.ui.theme.PMDMComposeTheme
+import es.rafapuig.pmdm.clean.books.ui.theme.BooksTheme
 import io.ktor.client.engine.android.Android
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PMDMComposeTheme {
+            BooksTheme {
                 BookListScreenRoot(
                     viewModel = viewModel {
                         BookListViewModel(

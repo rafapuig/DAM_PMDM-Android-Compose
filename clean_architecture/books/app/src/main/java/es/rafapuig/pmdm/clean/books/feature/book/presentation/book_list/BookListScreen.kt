@@ -33,10 +33,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import es.rafapuig.pmdm.clean.books.R
+import es.rafapuig.pmdm.clean.books.core.presentation.UIText
 import es.rafapuig.pmdm.clean.books.feature.book.data.dummyBooks
 import es.rafapuig.pmdm.clean.books.feature.book.domain.model.Book
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.BookList
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.BookSearchBar
+import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.FavoritesPageContent
+import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.MessageText
+import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.SearchResultsPageContent
+import es.rafapuig.pmdm.clean.books.ui.theme.BooksTheme
 import es.rafapuig.pmdm.clean.books.ui.theme.DarkBlue
 import es.rafapuig.pmdm.clean.books.ui.theme.DesertWhite
 import es.rafapuig.pmdm.clean.books.ui.theme.SandYellow
@@ -185,75 +190,18 @@ private fun BookListScreen(
     }
 }
 
+
+@Preview(showSystemUi = true, locale = "es")
 @Composable
-fun SearchResultsPageContent(
-    state: BookListState,
-    onAction: (BookListAction) -> Unit
-) {
-    if (state.isLoading) {
-        CircularProgressIndicator()
-    } else {
-        when {
-            state.errorMessage != null -> {
-                MessageText(state.errorMessage.asString())
-            }
-
-            state.searchResults.isEmpty() -> {
-                MessageText(stringResource(R.string.no_search_results))
-            }
-
-            else -> {
-                BookList(
-                    books = state.searchResults,
-                    onBookClick = {
-                        onAction(BookListAction.OnBookClick(it))
-                    },
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun FavoritesPageContent(
-    state: BookListState,
-    onAction: (BookListAction) -> Unit
-) {
-    if (state.favoriteBooks.isEmpty()) {
-        MessageText(stringResource(R.string.no_favorites))
-    } else {
-        BookList(
-            books = state.favoriteBooks,
-            onBookClick = {
-                onAction(BookListAction.OnBookClick(it))
-            },
-            modifier = Modifier.fillMaxSize()
+fun BookListScreenWithResultsPreview() {
+    BooksTheme {
+        BookListScreen(
+            state = BookListState(
+                isLoading = false,
+                //errorMessage = UIText.DynamicString("Se ha producido un error desconocido"),
+                searchResults = emptyList()//dummyBooks
+            ),
+            onAction = {}
         )
     }
-}
-
-
-@Composable
-fun MessageText(text: String) {
-    Text(
-        text = text,
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.headlineSmall,
-        color = MaterialTheme.colorScheme.error
-    )
-}
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun BookListScreenPreview() {
-
-    BookListScreen(
-        state = BookListState(
-            //errorMessage = UIText.DynamicString("Error message"),
-            searchResults = dummyBooks
-        ),
-        onAction = {}
-    )
 }

@@ -103,7 +103,7 @@ fun WithConstraintsComposable6() {
 fun WithConstraintsComposable7() {
 
     BoxWithConstraints(
-        /** hacemos que el padre no imponga límites en la anchura **/
+        /** Hacemos que el padre no imponga límites en la anchura **/
         modifier = Modifier.wrapContentHeight(unbounded = true)
     ) {
         Text(getConstraintsText())

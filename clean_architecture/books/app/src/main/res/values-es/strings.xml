@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BookApp</string>
+    <string name="search_hint">Buscar...</string>
+    <string name="clear_search_hint">Borrar busqueda</string>
+    <string name="search_results">Resultados</string>
+    <string name="favorites">Favoritos</string>
+    <string name="no_search_results">Vaya, no hay ningún libro como resultado de tu consulta</string>
+    <string name="no_favorites">Todavía no has guardado ningun libro en favoritos</string>
+    <string name="book_cover">Portada del libro</string>
+    <string name="rating">Calificación</string>
+    <string name="pages">Páginas</string>
+    <string name="languages">Idiomas</string>
+    <string name="synopsis">Sinopsis</string>
+    <string name="go_back">Volver</string>
+    <string name="mark_as_favorite">Marcar como favorito</string>
+    <string name="remove_from_favorites">Eliminar de favoritos</string>
+    <string name="description_unavailable">Descripción no disponible</string>
+    <string name="error_disk_full">Vaya, parece que tu disco esta lleno.</string>
+    <string name="error_unknown">Vaya, algo salió mal.</string>
+    <string name="error_request_timeout">La solicitud teminó sin respuesta.</string>
+    <string name="error_no_internet">No se puede conectar al servidor, por favor revisa tu conexión a internet</string>
+</resources>

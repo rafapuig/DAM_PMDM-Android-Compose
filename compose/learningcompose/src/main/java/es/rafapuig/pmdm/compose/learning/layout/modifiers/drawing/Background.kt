@@ -30,8 +30,8 @@ import es.rafapuig.pmdm.compose.learning.gestures.toPx
 @Preview(showBackground = true)
 @Composable
 fun BackgroundModifierDemo1() {
-    val modifier =
-        Modifier.background(
+    val modifier = Modifier
+        .background(
             color = Color.Cyan,
             shape = RoundedCornerShape(25)
         )
@@ -42,8 +42,8 @@ fun BackgroundModifierDemo1() {
 @Preview(showBackground = true)
 @Composable
 fun BackgroundModifierDemo2() {
-    val modifier =
-        Modifier.background(
+    val modifier = Modifier
+        .background(
             brush = Brush.horizontalGradient(
                 listOf(Color.Blue, Color.Green)
             ),
@@ -57,13 +57,12 @@ fun BackgroundModifierDemo2() {
 @Preview(showBackground = true)
 @Composable
 fun AlphaModifierDemo1() {
-    val modifier =
-        Modifier
-            .alpha(0.35f) // Hay que ponerlo antes para que afecte al resto
-            .background(
-                color = Color.Cyan,
-                shape = RoundedCornerShape(25)
-            )
+    val modifier = Modifier
+        .alpha(0.35f) // Hay que ponerlo antes para que afecte al resto
+        .background(
+            color = Color.Cyan,
+            shape = RoundedCornerShape(25)
+        )
 
     Box(modifier = modifier.size(200.dp))
 }
@@ -71,10 +70,9 @@ fun AlphaModifierDemo1() {
 @Preview(showBackground = true)
 @Composable
 fun ClipModifierDemo1() {
-    val modifier =
-        Modifier
-            .clip(RoundedCornerShape(25)) // recortar antes
-            .background(color = Color.Cyan)
+    val modifier = Modifier
+        .clip(RoundedCornerShape(25)) // recortar antes
+        .background(color = Color.Cyan)
 
     Box(modifier = modifier.size(200.dp))
 }
@@ -148,7 +146,11 @@ fun DrawBehindModifierDemo() {
             )
     ) {
         // El contenido va por encima de lo dibujado en el canvas
-        Box(modifier = Modifier.size(40.dp).background(Color.Green))
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .background(Color.Green)
+        )
     }
 }
 
@@ -200,6 +202,10 @@ fun DrawWithContentModifierDemo() {
             )
     ) {
         // El contenido va por encima de lo dibujado en el canvas
-        Box(modifier = Modifier.size(80.dp).background(Color.Green))
+        Box(
+            modifier = Modifier
+                .size(80.dp)
+                .background(Color.Green)
+        )
     }
 }

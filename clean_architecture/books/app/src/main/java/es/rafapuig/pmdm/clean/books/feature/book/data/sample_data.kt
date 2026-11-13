@@ -10,3 +10,24 @@ val dummyBooks = (1..20).map {
         averageRating = 4.55
     )
 }
+
+val sampleBooks = listOf(
+    Book(
+        id = "1",
+        title = "Kotlin in action",
+        authors = listOf("Sebastian Aigner", "Author 2"),
+        averageRating = 2.257
+    ),
+    Book(
+        id = "2",
+        title = "Jetpack Compose 1.8 Essentials",
+        authors = listOf("Neil Smyth", "Author 2"),
+        averageRating = 3.89
+    ),
+    Book(
+        id = "3",
+        title = "Kotlin programming",
+        authors = listOf("Rafael Puig", "Author 2"),
+        averageRating = 4.555
+    )
+)

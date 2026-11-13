@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.BookListScreenRoot
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.BookListViewModel
-import es.rafapuig.pmdm.clean.books.ui.theme.PMDMComposeTheme
+import es.rafapuig.pmdm.clean.books.ui.theme.BooksTheme
 import org.koin.androidx.compose.koinViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,7 +28,7 @@ class KoinMainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PMDMComposeTheme {
+            BooksTheme {
                 // https://insert-koin.io/docs/reference/koin-android/viewmodel#injecting-your-viewmodel
                 val viewModel = getViewModel<BookListViewModel>()
 
