@@ -127,3 +127,6 @@ include(":navigation:navigation3:modularization")
 //include(":myapplication2")
 //include(":android:empty")
 include(":android:window_insets")
+
+
+include(":examples:compose:futbol:app")

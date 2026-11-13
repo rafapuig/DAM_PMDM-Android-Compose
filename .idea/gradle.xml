@@ -6,6 +6,7 @@
       <GradleProjectSettings>
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -71,6 +72,10 @@
             <option value="$PROJECT_DIR$/compose/learningcompose" />
             <option value="$PROJECT_DIR$/compose/previews" />
             <option value="$PROJECT_DIR$/compose/resources" />
+            <option value="$PROJECT_DIR$/examples" />
+            <option value="$PROJECT_DIR$/examples/compose" />
+            <option value="$PROJECT_DIR$/examples/compose/futbol" />
+            <option value="$PROJECT_DIR$/examples/compose/futbol/app" />
             <option value="$PROJECT_DIR$/exercises" />
             <option value="$PROJECT_DIR$/exercises/compose_exercises" />
             <option value="$PROJECT_DIR$/exercises/viewmodel_exercises" />
