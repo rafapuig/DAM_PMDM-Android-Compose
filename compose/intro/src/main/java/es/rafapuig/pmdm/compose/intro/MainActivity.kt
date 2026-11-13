@@ -61,6 +61,12 @@ fun MainActivityScreen() {
     }
 }
 
+@Preview(showSystemUi = true)
+@Composable
+fun MainActivityPreview() {
+    MainActivityScreen()
+}
+
 
 @Composable
 fun LevanteUDLogo(modifier: Modifier = Modifier) {

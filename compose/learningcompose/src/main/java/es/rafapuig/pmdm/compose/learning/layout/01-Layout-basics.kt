@@ -130,13 +130,13 @@ fun PersonAvatar() {
 
         // Segundo elemento (irá delante / encima del primero)
         Icon(
+            imageVector = Icons.Filled.Check,
             modifier = Modifier
                 .size(16.dp)
                 .border(1.dp, Color.White, CircleShape)
                 .clip(CircleShape)
                 .background(Color.Blue)
-                .padding(2.dp)
-            ,imageVector = Icons.Filled.Check,
+                .padding(2.dp),
             tint = Color.White,
             contentDescription = "Check mark")
     }

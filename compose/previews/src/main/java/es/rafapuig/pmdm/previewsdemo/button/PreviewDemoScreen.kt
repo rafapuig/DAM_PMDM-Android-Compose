@@ -1,6 +1,5 @@
-package es.rafapuig.pmdm.previewsdemo
+package es.rafapuig.pmdm.previewsdemo.button
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -69,6 +68,7 @@ fun MyButtonPreview4() {
     MyButton("Hola Compose", color = Color.Cyan)
 }
 
+
 @Composable
 fun DemoScreenContent(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
@@ -94,18 +94,15 @@ fun DemoScreenContentPreview() {
  * y elegir el tema claro u oscuro
  * Para ellos hay que usar la función del tema de Material
  */
-@Preview(
-    showSystemUi = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
-)
+@Preview(showSystemUi = true)
 @Composable
 fun DemoScreenPreview() {
-    PMDMComposeTheme {
+    PMDMComposeTheme(darkTheme = false) {
         /**
-         * El parámetro content del Scaffold es una lambda que recibe
-         * un PaddingValues con el padding qu debemos aplicar
+         * El parámetro content del Scaffold es una lambda / tipo función
+         * que recibe un PaddingValues con el padding qu debemos aplicar
          * a los elementos de la pantalla para que dejen espacio
-         * a los elementos de la UI del sistema
+         * a los elementos de la UI del sistema (status bar y la navigation bar)
          */
         Scaffold { innerPadding ->
             DemoScreenContent(

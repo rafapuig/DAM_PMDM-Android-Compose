@@ -97,7 +97,7 @@ fun MovieCardPreview() {
     ComposeExercisesTheme {
         Surface {
             MovieCard(
-                title = "Ratatouille\nLa rata que sabia cocinar\ny queria queso\ny eso",
+                title = "Ratatouille\nLa rata que sabia cocinar\ny quería queso\ny eso",
                 posterPath = "/nGUelOVetiRpY2wTBMHTbrTIGYC.jpg",
                 voteAverage = 7.9
             )
