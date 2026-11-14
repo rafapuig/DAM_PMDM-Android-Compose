@@ -35,6 +35,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import es.rafapuig.pmdm.clean.books.R
 import es.rafapuig.pmdm.clean.books.core.presentation.UIText
 import es.rafapuig.pmdm.clean.books.feature.book.data.dummyBooks
+import es.rafapuig.pmdm.clean.books.feature.book.data.sampleBooks
 import es.rafapuig.pmdm.clean.books.feature.book.domain.model.Book
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.BookList
 import es.rafapuig.pmdm.clean.books.feature.book.presentation.book_list.components.BookSearchBar
@@ -199,7 +200,7 @@ fun BookListScreenWithResultsPreview() {
             state = BookListState(
                 isLoading = false,
                 //errorMessage = UIText.DynamicString("Se ha producido un error desconocido"),
-                searchResults = emptyList()//dummyBooks
+                searchResults = sampleBooks //emptyList()//dummyBooks
             ),
             onAction = {}
         )

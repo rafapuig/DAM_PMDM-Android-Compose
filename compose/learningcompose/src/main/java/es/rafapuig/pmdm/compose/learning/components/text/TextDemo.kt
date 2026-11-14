@@ -1,6 +1,8 @@
 package es.rafapuig.pmdm.compose.learning.components.text
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
@@ -22,16 +24,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.rafapuig.pmdm.compose.learning.R
+import es.rafapuig.pmdm.compose.learning.ui.theme.pastel.PastelTheme
 
 @Preview(showBackground = true, widthDp = 190)
 @Composable
 fun TextDemo() {
+
+    val captionModifier = Modifier
+        .fillMaxWidth()
+        .background(Color(0xFF76BEFF))
+
+    val defaultStyle = TextStyle.Default
+    val materialStyle = MaterialTheme.typography.bodyLarge
+
+    // Parece que si estamos bajo la llamada al tema es el bodyLarge de material
+    // Si no, valores inespecíficos
+    val currentStyle = LocalTextStyle.current
+        //.merge(MaterialTheme.typography.bodyLarge)
+
     Column {
+
         /**
          * Uso básico de Text
          * (utiliza como estilo el LocalTextStyle.current)
          */
         Text("Hola Compose!!")
+        Text("Current Text Style", fontWeight = FontWeight.Bold, modifier = captionModifier)
+        Text("Font family: ${currentStyle.fontFamily}")
+        Text("Font weight: ${currentStyle.fontWeight?.weight}")
+        Text("Font size: ${currentStyle.fontSize.value}")
+        Text("Line height: ${currentStyle.lineHeight}")
+
+
 
         HorizontalDivider()
 
@@ -40,7 +64,9 @@ fun TextDemo() {
          */
         Text("Color Red!!", color = Color.Red)
         Text("Color Blue!!", color = Color(0xFF0000FF))
-        Text("Color from Theme", color = MaterialTheme.colorScheme.secondary)
+        Text("Color from theme primary", color = MaterialTheme.colorScheme.primary)
+        Text("Color from theme secondary", color = MaterialTheme.colorScheme.secondary)
+        Text("Color from theme tertiary", color = MaterialTheme.colorScheme.tertiary)
 
         HorizontalDivider()
 
@@ -61,13 +87,12 @@ fun TextDemo() {
         Text("Font size 18 sp", fontSize = 18.sp)
         Text("Font size 24 sp", fontSize = 24.sp)
 
-        val defaultStyle = TextStyle.Default
         Text("Font size ${defaultStyle.fontSize.value} sp", fontSize = defaultStyle.fontSize)
 
-        val materialStyle = MaterialTheme.typography.bodyLarge
         Text("Font size ${materialStyle.fontSize.value} sp", fontSize = materialStyle.fontSize)
 
-        val defaultFontSize = LocalTextStyle.current.merge(MaterialTheme.typography.bodyLarge).fontSize.value
+        val defaultFontSize = LocalTextStyle.current
+            .merge(MaterialTheme.typography.bodyLarge).fontSize.value
         Text("Font size $defaultFontSize sp", fontSize = LocalTextStyle.current.fontSize)
         Text("Font size $defaultFontSize sp", fontSize = defaultFontSize.sp)
 
@@ -100,19 +125,52 @@ fun TextDemo() {
         HorizontalDivider()
         Text("Text Decoration Underline", textDecoration = TextDecoration.Underline)
         Text("Text Decoration LineThrough", textDecoration = TextDecoration.LineThrough)
-        Text("Text Decoration Both", textDecoration = TextDecoration.Underline + TextDecoration.LineThrough)
+        Text(
+            "Text Decoration Both",
+            textDecoration = TextDecoration.Underline + TextDecoration.LineThrough
+        )
 
         HorizontalDivider()
 
         Text("Align center", textAlign = TextAlign.Center, modifier = Modifier.width(190.dp))
         Text("Align End", textAlign = TextAlign.End, modifier = Modifier.width(190.dp))
-        Text("Align Justify (texto para rellenar lineas)", textAlign = TextAlign.Justify, modifier = Modifier.width(190.dp))
-        Text("Line height 30 sp", lineHeight = 30.sp)
-        Text("Overflow Ellipsis (texto para rellenar)", overflow = TextOverflow.Ellipsis, maxLines = 1, modifier = Modifier.width(190.dp))
-        Text("Middle Ellipsis (texto para rellenar)",  overflow = TextOverflow.MiddleEllipsis, maxLines = 1, modifier = Modifier.width(190.dp))
+        Text(
+            "Align Justify (texto para rellenar lineas)",
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.width(190.dp)
+        )
 
-        Text("Como si hubiera espacio horizontal ilimitado", softWrap = false, modifier = Modifier.width(190.dp))
-        Text("SoftWrap salta de linea cuando se acaba el espacio", softWrap = true, modifier = Modifier.width(190.dp))
+        HorizontalDivider()
+
+        Text("Line height ${materialStyle.lineHeight} sp")
+        Text("Line height 30 sp", lineHeight = 30.sp)
+        Text("Line height 40 sp", lineHeight = 40.sp)
+
+        HorizontalDivider()
+
+        Text(
+            "Overflow Ellipsis (texto para rellenar)",
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+            modifier = Modifier.width(190.dp)
+        )
+        Text(
+            "Middle Ellipsis (texto para rellenar)",
+            overflow = TextOverflow.MiddleEllipsis,
+            maxLines = 1,
+            modifier = Modifier.width(190.dp)
+        )
+
+        Text(
+            "Como si hubiera espacio horizontal ilimitado",
+            softWrap = false,
+            modifier = Modifier.width(190.dp)
+        )
+        Text(
+            "SoftWrap salta de linea cuando se acaba el espacio",
+            softWrap = true,
+            modifier = Modifier.width(190.dp)
+        )
 
         Text(
             text = "Hola Compose!!!",
@@ -132,5 +190,13 @@ fun TextDemo() {
                 Text("Adios Compose local styled!!!")
             }
         }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 190, heightDp = 1000)
+@Composable
+fun TextDemoPreview() {
+    PastelTheme {
+        TextDemo()
     }
 }

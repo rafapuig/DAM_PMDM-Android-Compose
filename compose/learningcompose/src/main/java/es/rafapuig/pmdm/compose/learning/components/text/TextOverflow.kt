@@ -56,7 +56,7 @@ fun TextOverflowDemo() {
     )
 
     HorizontalDivider()
-    Text("Overflow Visible") // Debería sobrepasar los limites!!!
+    Text("Overflow Visible") // ¡Debería sobrepasar los límites!!!
     Text(
         "Titular de una noticia muy pero que muy muy largo",
         maxLines = 1,

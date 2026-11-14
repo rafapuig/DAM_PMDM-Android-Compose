@@ -7,7 +7,6 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import es.rafapuig.pmdm.compose.learning.ui.theme.Typography
 
 
 @Composable
@@ -28,19 +27,19 @@ fun PastelTheme(
     }
 
     /**
-     * Un tema de Material 3 esta compuesto por 2 subsistemas:
+     * Un tema de Material 3 está compuesto por 2 subsistemas:
      * - El sistema de colores (schemeColor)
      * - El sistema de tipografía (typography)
      * - El sistema de formas (shapes)
      *
      * Cuando personalizamos estos valores los cambios se reflejan
-     * automaticamente en los componentes de Material 3 que usemos
+     * automáticamente en los componentes de Material 3 que usemos
      * en nuestra app.
      */
 
     MaterialTheme(
         colorScheme = colorScheme,
-        shapes = MaterialTheme.shapes,
+        //shapes = MaterialTheme.shapes,
         typography = Typography,
         content = content // contenido de una App que usa este tema
     )

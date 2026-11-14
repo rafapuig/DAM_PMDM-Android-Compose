@@ -102,7 +102,7 @@ fun SpanStyleDemo() {
                 textAlign = TextAlign.End
             )
         ) {
-            append("Este texto está alineado a la derecha")
+            append("Este texto está alineado a la derecha\uD83E\uDEF6")
         }
     }
 

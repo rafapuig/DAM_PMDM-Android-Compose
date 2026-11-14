@@ -1,6 +1,7 @@
 package es.rafapuig.pmdm.compose.learning.components.text
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
@@ -40,7 +41,8 @@ fun TextWithColorPreview() {
     PMDMComposeTheme {
         Column {
             CompositionLocalProvider(
-                LocalTextStyle provides LocalTextStyle.current.copy(textDecoration = TextDecoration.Underline)
+                LocalTextStyle provides LocalTextStyle.current
+                    .copy(textDecoration = TextDecoration.Underline)
             ) {
                 /**
                  * En este scope proporcionamos el valor de LocalTextStyle
@@ -58,8 +60,11 @@ fun TextWithColorPreview() {
 
             CompositionLocalProvider(LocalContentColor provides Color.Yellow) {
                 Text(text = "Hola Compose")
+                Text(text = "Hola Compose", color = LocalContentColor.current)
             }
+
             Text(text = "Hola Compose") // Color por defecto
+            Text(text = "Hola Compose", color = LocalContentColor.current) // Color por defecto
         }
     }
 }

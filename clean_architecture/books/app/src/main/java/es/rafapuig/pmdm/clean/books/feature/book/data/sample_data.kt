@@ -15,7 +15,7 @@ val sampleBooks = listOf(
     Book(
         id = "1",
         title = "Kotlin in action",
-        authors = listOf("Sebastian Aigner", "Author 2"),
+        authors = listOf("Dimitry Jemerov", "Author 2"),
         averageRating = 2.257
     ),
     Book(
@@ -26,8 +26,14 @@ val sampleBooks = listOf(
     ),
     Book(
         id = "3",
-        title = "Kotlin programming",
-        authors = listOf("Rafael Puig", "Author 2"),
+        title = "Kotlin Programming",
+        authors = listOf("Matthew Mathias", "Author 2"),
+        averageRating = 1.555
+    ),
+    Book(
+        id = "4",
+        title = "Kotlin in Action, Second Edition",
+        authors = listOf("Roman Elizarov", "Author 2"),
         averageRating = 4.555
     )
 )

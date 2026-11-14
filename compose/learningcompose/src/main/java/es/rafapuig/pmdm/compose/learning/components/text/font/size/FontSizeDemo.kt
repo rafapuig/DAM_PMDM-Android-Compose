@@ -81,3 +81,11 @@ fun FontSizeTextThemePreview() {
         FontSizeTextDemo()
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun FontSizeTextMaterialPreview() {
+    MaterialTheme {
+        FontSizeTextDemo()
+    }
+}

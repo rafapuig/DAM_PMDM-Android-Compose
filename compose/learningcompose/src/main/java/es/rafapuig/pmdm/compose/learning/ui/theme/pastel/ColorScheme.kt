@@ -9,6 +9,7 @@ val LightColors = lightColorScheme(
     onPrimary = Color(0xFF0D47A1),
     primaryContainer = Color(0xFFD1E9FF),
     onPrimaryContainer = Color(0xFF002E5C),
+    inversePrimary = Color(0xFF6EA9FF),
 
     secondary = Color(0xFFA5D6A7),
     onSecondary = Color(0xFF1B5E20),
@@ -33,7 +34,7 @@ val LightColors = lightColorScheme(
 
     inverseSurface = Color(0xFF2C2C2E),
     inverseOnSurface = Color(0xFFF2F0F3),
-    inversePrimary = Color(0xFF6EA9FF),
+
 
     error = Color(0xFFEF9A9A),
     onError = Color(0xFF680005),
