@@ -20,14 +20,16 @@ import androidx.compose.ui.unit.sp
 
 /**
  * Los string anotados permiten dividir el texto en varias secciones
- * cada una con su propio estilo
+ * cada una con su propio estilo.
  *
- * Un AnnotatedString se crea utilizando la función builder buildAnnotatedString
- * pasándole los textos y los estilos que la componen
+ * Un AnnotatedString se crea utilizando la función builder `buildAnnotatedString`
+ * pasándole los textos y los estilos que la componen.
+ *
+ * Las secciones se combinan mediante llamadas a la función `append`
  *
  * Hay dos estilos:
- * - SpanStyle (para aplicar a un span de caracteres individuales de un string)
- * - ParagraphStyle (aplica a párrafos)
+ * - `SpanStyle` (para aplicar a un span de caracteres individuales de un string)
+ * - `ParagraphStyle` (aplica a párrafos)
  */
 
 @Preview(showBackground = true)
@@ -93,8 +95,8 @@ fun SpanStyleDemo() {
         ) {
             append(
                 "Este texto ha sido identado en la primera linea 30 sp " +
-                        "y en el resto solamente 10 sp. Tambien se le ha " +
-                        "icrementado el alto de la linea"
+                        "y en el resto solamente 10 sp. También se le ha " +
+                        "incrementado el alto de la linea"
             )
         }
         withStyle(
