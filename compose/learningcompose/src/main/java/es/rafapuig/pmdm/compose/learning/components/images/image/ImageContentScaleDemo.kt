@@ -1,4 +1,4 @@
-package es.rafapuig.pmdm.compose.learning.components.images
+package es.rafapuig.pmdm.compose.learning.components.images.image
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -18,33 +18,36 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import es.rafapuig.pmdm.compose.learning.R
 
-class ContentScaleProvider() : PreviewParameterProvider<ContentScale> {
+class ContentScaleProvider : PreviewParameterProvider<ContentScale> {
     override val values: Sequence<ContentScale>
-        get() = sequenceOf(
-            ContentScale.Fit, // Se ajusta al destino (wh < dest)
-            ContentScale.Crop, // Se ajusta a la dimensión más larga
-            ContentScale.None, // No se ajusta
-            ContentScale.Inside, // Solo se ajusta si es mas grande que el destino
-            ContentScale.FillHeight, // Se ajusta en alto (puede recortar por lados si es muy ancha)
-            ContentScale.FillWidth, // Se ajusta en ancho (puede recortar por arriba y abajo si el muy larga)
-            ContentScale.FillBounds // Se ajusta al destino (no mantiene relación aspecto)
-        )
+        get() = with(ContentScale) {
+            sequenceOf(
+                None, // No se ajusta
+                Inside, // Solo se ajusta si es más grande que el destino
+                Fit, // Se ajusta al destino (wh < dest)
+                FillHeight, // Se ajusta en alto (puede recortar por lados si es muy ancha)
+                FillWidth, // Se ajusta en ancho (puede recortar por arriba y abajo si el muy larga)
+                FillBounds, // Se ajusta al destino (no mantiene relación aspecto)
+                Crop, // Se ajusta a la dimensión más larga
+            )
+        }
 }
 
-@Preview(showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun ImageContentScaleDemoScreen(
     @PreviewParameter(ContentScaleProvider::class)
-    contentScale: ContentScale) {
+    contentScale: ContentScale
+) {
 
     val painter = painterResource(id = R.drawable.real_sociedad)
-
 
     Column {
         val boxModifier =
             Modifier
                 .border(2.dp, Color.Black)
                 .fillMaxWidth()
+
         val imageAlignment = Alignment.Center // Cambiar para ver efecto
 
         Box(modifier = boxModifier.weight(1f)) {
