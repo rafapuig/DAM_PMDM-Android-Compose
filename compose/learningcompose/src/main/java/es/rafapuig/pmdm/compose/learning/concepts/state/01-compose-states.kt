@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
- * Estados de Compose State<T> y MutableState<T>
+ * Estados de Compose `State<T>` y `MutableState<T>`
  *
  * En Compose un estado es un valor que puede cambiar a lo largo del tiempo
  *
@@ -110,7 +110,7 @@ fun test() {
  * es llamada de nuevo por el runtime de Compose cuando se produce un cambio en ese estado
  * para se vuelva a generar el pedazo de UI del que se encarga la función
  * teniendo el nuevo valor del estado
- * Este fenómeno se denomina recomposición
+ * Este fenómeno se denomina RECOMPOSICIÓN
  */
 
 @Preview

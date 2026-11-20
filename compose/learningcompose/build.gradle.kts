@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.navigation3:navigation3-runtime:1.0.0-beta01")
     implementation("androidx.navigation3:navigation3-ui:1.0.0-beta01")
     implementation(libs.androidx.compose.ui.text)
+    implementation(libs.androidx.ui.tooling.preview)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
@@ -80,4 +81,5 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.tooling)
 }
