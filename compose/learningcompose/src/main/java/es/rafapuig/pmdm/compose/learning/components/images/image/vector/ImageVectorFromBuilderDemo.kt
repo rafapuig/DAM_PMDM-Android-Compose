@@ -1,46 +1,18 @@
-package es.rafapuig.pmdm.compose.learning.components.images.image
+package es.rafapuig.pmdm.compose.learning.components.images.image.vector
 
 import androidx.compose.foundation.Image
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import es.rafapuig.pmdm.compose.learning.R
-
-@Preview
-@Composable
-private fun ImageVectorDemo(modifier: Modifier = Modifier) {
-
-    Image(
-        imageVector = Icons.Default.AccountBox,
-        contentDescription = null
-    )
-}
 
 
 @Preview
 @Composable
-private fun ImageVectorDemo2(modifier: Modifier = Modifier) {
-
-    val imageVector =
-        ImageVector.vectorResource(R.drawable.spain_badge)
-
-    Image(
-        imageVector = imageVector,
-        contentDescription = null
-    )
-}
-
-@Preview
-@Composable
-private fun ImageVectorDemo3() {
+private fun ImageVectorFromBuilderDemo() {
 
     val homeIcon = ImageVector.Builder(
         name = "Home",
