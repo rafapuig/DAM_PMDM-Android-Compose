@@ -13,10 +13,14 @@ import es.rafapuig.pmdm.compose.learning.components.images.coil.preview.AsyncIma
  * que ejecuta una solicitud de imagen de forma asíncrona
  * y muestra el resultado.
  * Admite los mismos argumentos que el composable Image estándar.
+ *
+ * Se puede usar como model
+ * - el valor del ImageRequest.data
+ * - un ImageRequest
  */
 
 @Composable
-fun NetworkImage(
+fun CoilNetworkImage(
     modifier: Modifier = Modifier
 ) {
     AsyncImage(
@@ -28,8 +32,8 @@ fun NetworkImage(
 
 @Preview
 @Composable
-private fun NetworkImageDemoPreview() {
+private fun CoilNetworkImageDemoPreview() {
     AsyncImageWithPreview {
-        NetworkImage()
+        CoilNetworkImage()
     }
 }

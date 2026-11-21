@@ -76,6 +76,8 @@
             <option value="$PROJECT_DIR$/examples/compose" />
             <option value="$PROJECT_DIR$/examples/compose/futbol" />
             <option value="$PROJECT_DIR$/examples/compose/futbol/app" />
+            <option value="$PROJECT_DIR$/examples/compose/lorempicsum" />
+            <option value="$PROJECT_DIR$/examples/compose/lorempicsum/app" />
             <option value="$PROJECT_DIR$/exercises" />
             <option value="$PROJECT_DIR$/exercises/compose_exercises" />
             <option value="$PROJECT_DIR$/exercises/viewmodel_exercises" />

@@ -130,3 +130,4 @@ include(":android:window_insets")
 
 
 include(":examples:compose:futbol:app")
+include(":examples:compose:lorempicsum:app")
