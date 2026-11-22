@@ -53,6 +53,12 @@ import kotlin.random.Random
  * desde el servidor y que Coil la decodifique a su tamaño original
  */
 
+/**
+ * El límite en la API Lorem Picsum
+ * es tanto para la altura como para la anchura de 5000 pixels
+ * Si cualquiera de las dos dimensiones supera los 5000
+ * se devuelve un error HTTP 400 con el contenido text/plain: Invalid size
+ */
 private const val LOREM_PICSUM_MAX_SIZE = 5_000 // pixeles
 
 @Preview
@@ -63,12 +69,6 @@ private fun RememberAsyncImagePainterDemo() {
     var isError by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf("") }
 
-    /**
-     * El límite en la API Lorem Picsum
-     * es tanto para la altura como para la anchura de 5000 pixels
-     * Si cualquiera de las dos dimensiones supera los 5000
-     * se devuelve un error HTTP 400 con el contenido text/plain: Invalid size
-     */
     val context = LocalContext.current
 
     // Obtenemos las dimensiones de la pantalla y recordarlas entre recomposiciones
