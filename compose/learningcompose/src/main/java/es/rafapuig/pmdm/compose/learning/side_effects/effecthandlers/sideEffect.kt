@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import es.rafapuig.pmdm.compose.learning.TAG
 
 /**
  * SideEffect se llama cada vez que se produce una recomposición con éxito
@@ -28,7 +29,7 @@ fun SideEffectDemo() {
         modifier = Modifier.fillMaxSize(),
         checked = checked,
         onCheckedChange = {
-            Log.i("PMDM","Cambio de estado del Switch")
+            Log.i(TAG,"Cambio de estado del Switch")
             checked = it
         }
     )

@@ -13,15 +13,19 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun MyStatefulSlider(modifier: Modifier = Modifier) {
 
+    /**
+     * Este composable declara un State
+     * y, por tanto, es considerado stateful
+     * El estado se delega en una variable: sliderPosition
+     */
     var sliderPosition by remember { mutableFloatStateOf(30f) }
 
     Slider(
-        value = sliderPosition,
-        onValueChange = { sliderPosition = it },
+        value = sliderPosition, // pasamos estado
+        onValueChange = { sliderPosition = it }, // pasamos comportamiento
         valueRange = 20f..40f,
         steps = 5
     )
-
 }
 
 

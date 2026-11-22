@@ -55,6 +55,7 @@ fun <T> EditableDropDown(
 
 
     ExposedDropdownMenuBox(
+        modifier = modifier,
         expanded = expanded && filteredItems.isNotEmpty(),
         onExpandedChange = { expanded = !expanded }
     ) {
@@ -101,7 +102,10 @@ fun EditableDropDownPreview() {
     var city by remember { mutableStateOf("") }
 
     Scaffold { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Column(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+
             EditableDropDown(
                 value = city,
                 items = SampleData.Cities,
@@ -109,7 +113,9 @@ fun EditableDropDownPreview() {
                 onValueChange = { city = it },
                 modifier = Modifier.fillMaxWidth()
             )
+
             Spacer(Modifier.height(16.dp))
+
             Text(text = city)
         }
     }

@@ -32,14 +32,14 @@ fun ParentFunctionWithState() {
     /**
      * Declaramos la función para cambiar el estado
      *
-     * La expresión lambda recibe el nuevo estado y puede acceder la
+     * La expresión lambda recibe el nuevo estado y puede acceder a
      * la variable que contiene el valor del estado para modificarlo
      * (Una lambda puede acceder a las variables declaradas en la función
-     * donde esta definida, esto se llama clausura, por eso definimos
+     * donde está definida, esto se llama clausura, por eso definimos
      * la lambda en la misma función donde se declara el estado)
      */
     val onSwitchChange = { newState: Boolean ->
-        switchState = newState
+        switchState = newState // Accede a switchState
     }
 
     /**

@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
  *      fluyen hacia arriba desde los composables hijos hacia los ancestros.
  *      Los hijos emiten eventos y los padres los manejan modificando el estado de la UI,
  *      El cambio en el estado de la UI produce a su vez una recomposición.
- *      La recomposicion hace que se vuelva a llamar a las funciones que dependen del
+ *      La recomposición hace que se vuelva a llamar a las funciones que dependen del
  *      estado cuyo valor ha cambiado.
  */
 
@@ -54,9 +54,9 @@ fun Counter(
 fun Parent() {
     /**
      * Estado observable por Compose (de un valor de tipo Int)
-     * La funcion remember cachea el objeto
+     * La función remember cachea el objeto
      * de forma que solamente se crea primera vez que se llama a Parent (en la primera composición)
-     * y despues se devuelve el mismo objeto en las recomposiciones.
+     * y después se devuelve el mismo objeto en las recomposiciones.
      */
     val counterState = remember { mutableIntStateOf(0) }
 
@@ -69,7 +69,7 @@ fun Parent() {
     val onIncrement: () -> Unit = { counterState.value++ }
 
     Counter(
-        count = counterState.value, // pasamos el valor del estado al composable hijo
+        count = counterState.intValue, // pasamos el valor del estado al composable hijo
         onIncrement = onIncrement // pasamos el manejador del evento click al composable hijo
     )
 }

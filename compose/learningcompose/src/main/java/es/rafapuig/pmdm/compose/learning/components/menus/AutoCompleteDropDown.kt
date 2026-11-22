@@ -110,6 +110,7 @@ fun AutocompleteDropdownExample() {
             )
 
             Spacer(Modifier.height(16.dp))
+
             Text("Seleccionada: ${selectedCity?.name ?: "-"}")
         }
     }

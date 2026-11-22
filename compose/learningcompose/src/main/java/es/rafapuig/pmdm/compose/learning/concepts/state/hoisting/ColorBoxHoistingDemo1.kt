@@ -18,15 +18,34 @@ import kotlin.random.Random
 /**
  * En este ejemplo el estado color lo subimos (hoisting) al padre
  *
- * Creamos un objeto función que modifique el valor de estado color
+ * Creamos un objeto función que modifique el valor del estado color
  * y pasamos al composable hijo ColorBox
  * tanto el valor actual del estado del color
  * como el manejador de eventos que se debe llamar cuando cambie el color
  * (el objeto función)
  */
+
+/**
+ * El composable ColorBox ahora es stateless
+ * Recibe un color desde el llamador
+ * y un manejador de eventos que se debe llamar cuando cambie el color
+ */
+@Composable
+private fun ColorBox(
+    color: Color,
+    onColorChange: (Color) -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .background(color)
+            .size(300.dp)
+            .clickable { onColorChange(Color.random()) })
+}
+
+
 @Preview(showBackground = true)
 @Composable
-fun ColorBoxHoistingDemoScreen(modifier: Modifier = Modifier) {
+private fun ColorBoxHoistingDemo() {
     /**
      * El estado lo hemos hoisteado hacia el composable padre
      */
@@ -36,7 +55,7 @@ fun ColorBoxHoistingDemoScreen(modifier: Modifier = Modifier) {
 
     /**
      * El manejador de eventos onColorChange accede al estado color y lo actualiza
-     * (actualizar el estado color provocara que haya una recomposición del composable ColorBox)
+     * (actualizar el estado color provocará que haya una recomposición del composable ColorBox)
      */
     val onColorChange: (Color) -> Unit = {
         color = it
@@ -49,32 +68,3 @@ fun ColorBoxHoistingDemoScreen(modifier: Modifier = Modifier) {
      */
     ColorBox(color, onColorChange)
 }
-
-
-/**
- * El composable ColorBox ahora es stateless
- * Recibe un color desde el llamador
- * y un manejador de eventos que se debe llamar cuando cambie el color
- */
-@Composable
-fun ColorBox(
-    color: Color,
-    onColorChange: (Color) -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .background(color)
-            .size(300.dp)
-            .clickable { onColorChange(Color.random()) })
-}
-
-
-private fun Color.Companion.random() =
-    with(Random.Default) {
-        Color(
-            red = nextFloat(),
-            green = nextFloat(),
-            blue = nextFloat(),
-            1f
-        )
-    }

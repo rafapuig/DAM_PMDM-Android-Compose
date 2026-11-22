@@ -87,7 +87,8 @@ fun MyTextField() {
      */
     val rememberedTextState = remember { textState }
 
-    // Un objeto función para actualizar el estado a partir del texto introducido por el usuario
+    // Un objeto función para actualizar el estado
+    // a partir del texto introducido por el usuario
     val onTextChange = { newText: String ->
         rememberedTextState.value = newText // Actualizamos el valor del estado
     }
@@ -126,8 +127,8 @@ fun MyTextField2() {
 @Composable
 fun MyTextField3() {
     // desestructuramos las propiedades del objeto MutableState en dos variables
-    // la primera de tipo String contiene el valor memoriazado del estado
-    // la sefunda de tipo función recibe un String y lo usa para actualizar el estado
+    // la primera de tipo String contiene el valor memorizado del estado
+    // la segunda de tipo función recibe un String y lo usa para actualizar el estado
     val (rememberedText, setRememberedText) = remember { mutableStateOf("") }
 
     val onTextChange = { newText: String ->

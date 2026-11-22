@@ -1,8 +1,12 @@
 package es.rafapuig.pmdm.compose.learning.components.menus
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
@@ -17,11 +21,15 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import es.rafapuig.pmdm.compose.learning.data.Cities
 import es.rafapuig.pmdm.compose.learning.data.City
 import es.rafapuig.pmdm.compose.learning.data.SampleData
+import es.rafapuig.pmdm.compose.learning.ui.theme.PMDMComposeTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +45,7 @@ fun <T> Spinner(
     var expanded by remember { mutableStateOf(false) }
     var selectedIndex by remember { mutableIntStateOf(initialSelectedIndex) }
 
-    if (selectedIndex in 0 until items.size) {
+    if (selectedIndex in items.indices) {
         onItemSelected(items[selectedIndex])
     }
 
@@ -91,15 +99,32 @@ fun SpinnerM3ExamplePreview() {
 
     var selectedCity by remember { mutableStateOf<City?>(null) }
 
-    Scaffold { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-            Spinner(
-                items = SampleData.Cities.sortedBy { city -> city.name },
-                label = "Selecciona una ciudad",
-                itemToLabel = { it.name },
-                onItemSelected = { city -> selectedCity = city }
-            )
-            Text(text = selectedCity?.name ?: "No se ha seleccionado ninguna ciudad")
+    PMDMComposeTheme(darkTheme = true) {
+        Scaffold { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(16.dp)
+                    .fillMaxSize()
+            ) {
+                Spinner(
+                    items = SampleData.Cities.sortedBy { city -> city.name },
+                    label = "Selecciona una ciudad",
+                    itemToLabel = { it.name },
+                    onItemSelected = { city -> selectedCity = city }
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Text(
+                    text = selectedCity?.name ?: "No se ha seleccionado ninguna ciudad",
+                    fontSize = 32.sp,
+                    modifier = Modifier
+                        .weight(1f)
+                        .align(Alignment.CenterHorizontally)
+                        .wrapContentSize()
+                )
+            }
         }
     }
 }

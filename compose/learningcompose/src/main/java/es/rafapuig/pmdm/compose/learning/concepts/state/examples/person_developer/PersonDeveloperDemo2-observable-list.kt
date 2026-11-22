@@ -1,4 +1,4 @@
-package es.rafapuig.pmdm.compose.learning.concepts.state.developer
+package es.rafapuig.pmdm.compose.learning.concepts.state.examples.person_developer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,47 +22,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-private val LightGreen: Color =
-    Color(149, 207, 149, 255)
-
-
-/**
- * El modelo de datos de una persona en la UI
- */
-data class Person(
-    val name: String,
-    val age: Int,
-    val isDeveloper: Boolean = false
-)
-
-val persons = listOf(
-    Person("Perico Palotes", 45),
-    Person("Pedro Gado", 25, isDeveloper = true),
-    Person("Aitor Tilla", 18, isDeveloper = true)
-)
-
-/**
- * Una clase parameter provider de objetos de tipo Person
- * para inyectar un argumento de tipo persona
- * en una función composable con anotación @Preview
- * que declare un parámetro de tipo Person
- */
-class PersonProvider : PreviewParameterProvider<Person> {
-    override val values: Sequence<Person>
-        get() = persons.asSequence()
-}
+import es.rafapuig.pmdm.compose.learning.concepts.state.examples.person_developer.components.IsDeveloperCheckBox
+import es.rafapuig.pmdm.compose.learning.concepts.state.examples.person_developer.model.Person
+import es.rafapuig.pmdm.compose.learning.concepts.state.examples.person_developer.model.persons
+import es.rafapuig.pmdm.compose.learning.concepts.state.examples.person_developer.preview.PersonProvider
 
 
-@Preview
 @Composable
-fun PersonItem(
-    @PreviewParameter(PersonProvider::class) person: Person, //Parámetro inyectable en una preview
-    //onIsDeveloperChange: ((Boolean) -> Unit)? = null,
-    onPersonChange: ((Person) -> Unit)? = null
+private fun PersonItem(
+    person: Person, //Parámetro inyectable en una preview
+    onIsDeveloperChange: ((Boolean) -> Unit)? = null,
+    //onPersonChange: ((Person) -> Unit)? = null
 ) {
     Box(
         Modifier
@@ -87,8 +59,8 @@ fun PersonItem(
         Switch(
             person.isDeveloper,
             onCheckedChange = {
-                //onIsDeveloperChange?.invoke(it)
-                onPersonChange?.invoke(person.copy(isDeveloper = it))
+                onIsDeveloperChange?.invoke(it)
+                //onPersonChange?.invoke(person.copy(isDeveloper = it))
             },
             modifier = Modifier.align(Alignment.CenterEnd)
         )
@@ -103,26 +75,26 @@ fun PersonItem(
  */
 @Preview
 @Composable
-fun PersonItemPreview() {
+private fun PersonItemPreview() {
     PersonItem(
         Person("Perico Palotes", 45, isDeveloper = false)
     )
 }
 
-@Composable
-fun IsDeveloperCheckBox(
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    Checkbox(
-        checked = checked,
-        onCheckedChange = { onCheckedChange(it) }
-    )
-}
 
 @Preview
 @Composable
-fun PersonDemo() {
+private fun PersonItemPreview(
+    @PreviewParameter(PersonProvider::class)
+    person: Person, //Parámetro inyectable en la preview
+) {
+    PersonItem(person)
+}
+
+
+@Preview
+@Composable
+private fun PersonDemo() {
     /**
      * El estado es una persona
      */
@@ -131,9 +103,8 @@ fun PersonDemo() {
     }
 
     Column {
-        PersonItem(person) {
-            //person = person.copy(isDeveloper = it)
-            person = it
+        PersonItem(person) { isDeveloper ->
+            person = person.copy(isDeveloper = isDeveloper)
         }
 
         IsDeveloperCheckBox(
@@ -149,12 +120,18 @@ fun PersonDemo() {
 
 
 @Composable
-fun PersonList(persons: List<Person>, onPersonChange: (Person) -> Unit) {
+private fun PersonList(
+    persons: List<Person>,
+    onPersonChange: (Person) -> Unit
+) {
     Column {
         persons.forEach { person ->
-            PersonItem(person) { updatedPerson ->
-                onPersonChange(updatedPerson)
-            }
+            PersonItem(
+                person = person,
+                onIsDeveloperChange = { isDeveloper ->
+                    onPersonChange(person.copy(isDeveloper = isDeveloper))
+                }
+            )
         }
     }
 }
@@ -162,17 +139,31 @@ fun PersonList(persons: List<Person>, onPersonChange: (Person) -> Unit) {
 
 @Preview
 @Composable
-fun PersonListPreview() {
+private fun PersonListPreview() {
     /**
-     * El estado es una lista de personas
+     * El estado es una lista observable de personas
      */
-    var personList by remember {
-        mutableStateOf(persons)
+    val personList = remember {
+        //mutableStateListOf(*persons.toTypedArray())
+        persons.toMutableStateList()
     }
 
+    /**
+     * Para que haya una recomposition,
+     * no tenemos que cambiar la lista por otra
+     * basta con modificar algún elemento de la lista
+     */
     PersonList(personList) { updatedPerson ->
-        personList = personList.map {
-            if (it.name == updatedPerson.name) updatedPerson else it
+
+        // Buscamos la posición de la persona modificada en la lista
+        val index = personList
+            .indexOfFirst { it.name == updatedPerson.name }
+
+        // Si la encontramos la "actualizamos"
+        // (sustituimos esa persona por la nueva version actualizada
+        // de esa persona, en la misma posición)
+        if (index != -1) {
+            personList[index] = updatedPerson
         }
     }
 }

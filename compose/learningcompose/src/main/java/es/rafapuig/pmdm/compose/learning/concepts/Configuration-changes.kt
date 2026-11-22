@@ -3,7 +3,7 @@ package es.rafapuig.pmdm.compose.learning.concepts.configuration
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextField
@@ -14,7 +14,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import es.rafapuig.pmdm.compose.learning.ui.theme.pastel.PastelTheme
+import androidx.compose.ui.unit.dp
+import es.rafapuig.pmdm.compose.learning.ui.theme.PMDMComposeTheme
 
 /**
  * La función `remember`
@@ -28,36 +29,12 @@ import es.rafapuig.pmdm.compose.learning.ui.theme.pastel.PastelTheme
  * y vuelta a recrearla desde cero
  * (Se crea una nueva instancia de objeto Activity)
  *
- * La solucion es sencilla, sin embargo, consiste en usar la
+ * La solución es sencilla, sin embargo, consiste en usar la
  * función `rememberSaveable` en lugar de remember
  */
 
-@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun ConfigurationChangesDemoScreenPreview() {
-    ConfigurationChangesDemoScreen()
-}
-
-@Composable
-fun ConfigurationChangesDemoScreen() {
-    PastelTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            ConfigurationChangesDemoScreenContent(
-                modifier = Modifier.padding(innerPadding)
-            )
-        }
-    }
-}
-
-@Composable
-fun ConfigurationChangesDemoScreenContent(modifier: Modifier = Modifier) {
-    Box(modifier) {
-        MyTextField()
-    }
-}
-
-@Composable
-fun MyTextField() {
+fun MyStatefulTextField(modifier: Modifier = Modifier) {
     /**
      * Utilizamos la delegación de propiedades (uso de by)
      * para simplificar el acceso al valor del estado
@@ -71,6 +48,39 @@ fun MyTextField() {
 
     TextField(
         value = rememberedText, // Al obtener el valor se lee el estado mediante el delegado
-        onValueChange = onTextChange
+        onValueChange = onTextChange,
+        modifier = modifier
     )
+}
+
+
+@Composable
+fun ConfigurationChangesDemoScreenContent(
+    modifier: Modifier = Modifier
+) {
+    Box(modifier = modifier.padding(16.dp)) {
+        MyStatefulTextField(Modifier.fillMaxWidth())
+    }
+}
+
+@Composable
+fun ConfigurationChangesDemoScreen() {
+    PMDMComposeTheme {
+        Scaffold { innerPadding ->
+            ConfigurationChangesDemoScreenContent(
+                modifier = Modifier
+                    .padding(innerPadding)
+            )
+        }
+    }
+}
+
+
+@Preview(
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun ConfigurationChangesDemoScreenPreview() {
+    ConfigurationChangesDemoScreen()
 }

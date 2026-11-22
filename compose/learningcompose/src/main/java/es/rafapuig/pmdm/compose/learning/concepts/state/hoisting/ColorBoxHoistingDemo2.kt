@@ -14,17 +14,41 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import es.rafapuig.pmdm.compose.learning.concepts.state.hoisting.random
 import kotlin.random.Random
 
 /**
  * En este ejemplo tenemos dos ColorBox
  * Ambos composables comparten el mismo estado color
- * Cuando en el primero se hace click se cambia el valor de estado color
+ * Cuando en el primero se hace clic se cambia el valor de estado color
  * El segundo se actualiza al valor del color
  */
+
+/**
+ * El composable ColorBox ahora es stateless
+ * Recibe un color desde el llamador
+ * y un manejador de eventos que se debe llamar cuando cambie el color
+ * ambos parámetros tienen valor por defecto
+ */
+@Composable
+fun ColorBox(
+    color: Color = Color.White,
+    onColorChange: ((Color) -> Unit)? = null
+) {
+    Box(
+        modifier = Modifier
+            .background(color)
+            .size(300.dp)
+            .clickable {
+                onColorChange?.invoke(Color.random())
+            }
+    )
+}
+
+
 @Preview(showBackground = true)
 @Composable
-fun ColorBoxHoistingDemo2Screen(modifier: Modifier = Modifier) {
+fun ColorBoxHoistingDemo2() {
     /**
      * El estado lo hemos hoisteado hacia el composable padre
      */
@@ -46,37 +70,3 @@ fun ColorBoxHoistingDemo2Screen(modifier: Modifier = Modifier) {
     }
 
 }
-
-
-/**
- * El composable ColorBox ahora es stateless
- * Recibe un color desde el llamador
- * y un manejador de eventos que se debe llamar cuando cambie el color  *
- */
-@Composable
-fun ColorBox(
-    color: Color = Color.White,
-    onColorChange: ((Color) -> Unit)? = null
-) {
-    Box(
-        modifier = Modifier
-            .background(color)
-            .size(300.dp) then
-                if (onColorChange != null)
-                    Modifier.clickable {
-                        onColorChange(Color.random())
-                    }
-                else Modifier
-    )
-}
-
-
-private fun Color.Companion.random() =
-    with(Random.Default) {
-        Color(
-            red = nextFloat(),
-            green = nextFloat(),
-            blue = nextFloat(),
-            1f
-        )
-    }

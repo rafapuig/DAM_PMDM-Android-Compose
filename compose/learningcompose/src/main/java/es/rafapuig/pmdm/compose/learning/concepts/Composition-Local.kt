@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.tooling.preview.Preview
+import es.rafapuig.pmdm.compose.learning.ui.theme.PMDMComposeTheme
 
 /**
  * COMPOSITION LOCAL
@@ -22,49 +24,55 @@ import androidx.compose.ui.tooling.preview.Preview
  *
  * También sabemos que Compose está dirigido por estados (State-driven)
  * y que cambios en los estados generan recomposición de la UI
- * (lo que lleva a volver a llamar a funciones composables que hacen uso del valor del estado
+ * (lo que lleva a volver a llamar a funciones composables que leen valor del estado
  * que haya cambiado)
  *
  * Y además sabemos que un estado debe ser declarado en el nodo más alto necesario del árbol
  * de nodos de funciones composables
  * (definido por las llamadas a las funciones composables durante la composición)
- * Al hecho de subir la declaración del estado a un nodo superior (funcion llamadora)
- * le denominamos STATE HOISTING
+ * Al hecho de subir la declaración del estado a un nodo superior (función llamadora)
+ * le denominamos STATE HOISTING.
  *
- * Esto conduce a tener que pasar hacia abajo como argumento de llamada a las funciones composables
- * hijas el valor de estado.
+ * Esto implica tener que pasar hacia abajo como argumento de llamada a las funciones composables
+ * hijas el valor de ese estado que ha sido "hoisteado".
  *
  * Tener que hacer esto, puede llegar a volverse inmanejable en algunas situaciones.
  * (Por ejemplo, cuando tenemos que pasar el estado multiples niveles hacia abajo en la jerarquía,
  * el padre pasa el valor a la función composable hija, y esta a otra hija y esta a otra ...)
  *
- * Al final, las funciones intemedias entre la que declara el estado y la que finalmente hace uso de él
- * deben declaran un parñametro adicional con la única finalidad de actuar como meras intermediarias,
+ * Al final, las funciones intermedias
+ * entre la que declara el estado
+ * y la que finalmente hace uso de él
+ * deben declarar un parámetro adicional, con la única finalidad de actuar como meras intermediarias,
  * es decir, recibir un argumento para ese parámetro extra declarado
  * y usarlo como argumento para llamar a las funciones composables descendentes directas intermedias
  * que a su vez harán lo propio hasta que el valor llegue
- * a la composable que hace verdadero uso del valor del estado.
+ * a la función composable que hace realmente uso del valor del estado.
  *
- * La solución es usar CompositionLocal
+ * La solución a esto es usar CompositionLocal
  */
 
 /**
- * CompositionLocal proporciona una forma de hacer que
- * un estado declarado en un composable * en un lugar más arriba en la jerarquía del arbol
- * esté disponible a las funciones que ubicadas más abajo del arbol
- * sin tener que estar pasándolo a través de cada composable intermedio entre
- * el punto donde el estado es declarado y la función composable donde se usa.
+ * `CompositionLocal` proporciona una forma de hacer que
+ * un estado declarado en un composable
+ * en un lugar más arriba en la jerarquía del árbol
+ * esté disponible a las funciones ubicadas más abajo del árbol
+ * sin tener que estar pasándolo a través de cada composable intermedio
+ * entre el punto donde el estado es declarado
+ * y la función composable donde se usa.
  */
 
 val DarkRedish = Color(0xFFa08d87)
 val LightRedish = Color(0xFFffdbcf)
 
 /**
- * Cualquier Composable tendrá acceso al valor del estado
- * LocalColor mediante la propiedad current del objeto ProvidableCompositionLocal
- * En este caso: var color = LocalColor.current
+ * Cualquier Composable tendrá acceso al valor del estado LocalColor
+ * mediante la propiedad current del objeto `ProvidableCompositionLocal`
+ * En este caso:
+ * ```
+ * var color = LocalColor.current
  */
-val LocalColor = staticCompositionLocalOf { LightRedish }
+val LocalColor = staticCompositionLocalOf { Color.Green }
 
 @Composable
 fun ComposableLivingThing() {
@@ -109,7 +117,8 @@ fun ComposableAnimal() {
         "Composable Living Thing -> Animal",
         Modifier.background(LocalColor.current)
     )
-    CompositionLocalProvider(LocalColor provides Color.Red) {
+
+    CompositionLocalProvider(LocalColor provides DarkRedish) {
         ComposableMammal() //5
     }
 }
@@ -126,10 +135,12 @@ fun ComposableMammal() {
         "Composable Living Thing -> Animal -> Mammal",
         Modifier.background(LocalColor.current)
     )
-    CompositionLocalProvider(LocalColor provides Color.Green) {
+    CompositionLocalProvider(LocalColor provides Color.Cyan) {
         ComposableCat() //7
+        ComposableDog()
     }
     CompositionLocalProvider(LocalColor provides Color.Yellow) {
+        ComposableCat()
         ComposableDog() //8
     }
 }
@@ -142,15 +153,17 @@ fun ComposableRose() {
      */
     val backgroundColor = LocalColor.current
 
-    Text("Composable Living Thing -> Plant -> Flower -> Rose",
-        Modifier.background(backgroundColor))
+    Text(
+        "Composable Living Thing -> Plant -> Flower -> Rose",
+        Modifier.background(backgroundColor)
+    )
 }
 
 
 @Composable
 fun ComposableCat() {
     Text(
-        "Composable Living Thing -> Animal -> Mammal -> CAT",
+        "Composable Living Thing -> Animal -> Mammal -> Cat",
         Modifier.background(LocalColor.current)
     )
 }
@@ -159,7 +172,7 @@ fun ComposableCat() {
 fun ComposableDog() {
     /**
      * Este composable tiene acceso al estado LocalColor (CompositionLocal)
-     * al ser desdendente en la jerarquía del composable ComposableAnimal
+     * al ser descendente en la jerarquía del composable ComposableAnimal
      */
     val backgroundColor = LocalColor.current
     Text(
@@ -168,9 +181,16 @@ fun ComposableDog() {
     )
 }
 
-@Preview(showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(
+    showBackground = true,
+    widthDp = 430,
+    //uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
 fun DarkView() {
-    ComposableLivingThing()
+    PMDMComposeTheme {
+        Surface {
+            ComposableLivingThing()
+       }
+    }
 }
