@@ -93,14 +93,21 @@ fun test() {
 
     // Realizar operaciones que modifiquen el número de elementos de la colección
     // o cambiar elementos por otros producen un cambio de estado
+
+    // Para listas
     numbersState.add(5)
     numbersState += 6
     numbersState.remove(2)
     numbersState -= 1
+    numbersState[0] = 100
 
+    // Para conjuntos
     daysState.add("domingo")
+    daysState += "sábado"
+    daysState -= "sábado"
 
-    countryToCapital["Portugal"] = "Lisboa"
+    // Para mapas
+    countryToCapital["Portugal"] = "Lisboa" // Si no está lo añade
     countryToCapital -= "Portugal"
     countryToCapital += "Alemania" to "Berlin"
 }

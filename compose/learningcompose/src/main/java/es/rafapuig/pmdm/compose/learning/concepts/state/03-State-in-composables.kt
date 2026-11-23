@@ -36,7 +36,7 @@ import es.rafapuig.pmdm.compose.learning.concepts.recomposition.TAG
 @Composable
 fun MyComposableWithSideEffects() {
 
-    Log.i("MyComposableWithSideEffects", "Recomposición")
+    Log.i(TAG, "Recomposición")
 
     /**
      * Esta instrucción se ejecuta en cada recomposición
